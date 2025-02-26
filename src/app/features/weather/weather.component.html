@@ -1,0 +1,18 @@
+<div class="weather-container">
+    <h2>El Tiempo</h2>
+    <input type="text" [(ngModel)]="city" placeholder="Ingrese una ciudad">
+    <button (click)="getWeather()" [disabled]="!city">Consultar</button>
+  
+    <div *ngIf="weatherInformation">
+      <h3>{{ weatherInformation.name }}, {{ weatherInformation.sys.country }}</h3>
+      <img src="http://openweathermap.org/img/wn/{{ weatherInformation.weather[0].icon }}.png" alt="Weather Icon">
+      <ul>
+        <li><strong>Temperatura:</strong> {{ weatherInformation.main.temp }}°C</li>
+        <li><strong>Sensación Térmica:</strong> {{ weatherInformation.main.feels_like }}°C</li>
+        <li><strong>Humedad:</strong> {{ weatherInformation.main.humidity }}%</li>
+        <li><strong>Viento:</strong> {{ weatherInformation.wind.speed }} m/s</li>
+        <li><strong>Descripción:</strong> {{ weatherInformation.weather[0].description }}</li>
+      </ul>
+    </div>
+  </div>
+  

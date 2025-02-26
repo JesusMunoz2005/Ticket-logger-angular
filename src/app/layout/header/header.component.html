@@ -5,11 +5,20 @@
   <nav class="navigation">
     <ul class="nav-links">
       <li><a routerLink="/">Inicio</a></li>
+<<<<<<< HEAD
       <li><a routerLink="/regions">Comunidades Autónomas (prueba sin login)</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="/regions">Comunidades Autónomas</a></li>
       <li><a routerLink="/login">Login</a></li>
       <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
     </ul>
+=======
+      <li *ngIf="isLoggedIn"><a routerLink="/regions">Comunidades Autónomas</a></li>
+      <li><a routerLink="/weather">El tiempo</a></li>
+      <li><a routerLink="/login">Login</a></li>
+      <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+    </ul>
+    <app-notifications *ngIf="isLoggedIn"></app-notifications>
+>>>>>>> 3875b4f (weather)
   </nav>
  </header>
  

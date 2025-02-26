@@ -1,0 +1,21 @@
+.weather-container {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 320px;
+  background-color: #f9f9f9;
+}
+
+.weather-box {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-icon {
+  width: 50px;
+  height: 50px;
+}

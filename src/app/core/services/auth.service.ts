@@ -2,8 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, throwError, Observable } from 'rxjs';
+<<<<<<< HEAD
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environments';
+=======
+import { map, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environments';
+import { NotificationService } from './notification.service';
+>>>>>>> 3875b4f (weather)
 
 
 @Injectable({
@@ -14,7 +20,15 @@ export class AuthService {
  // BehaviorSubject almacena el token y permite a otros componentes reaccionar cuando cambia.
 
 
+<<<<<<< HEAD
  constructor(private http: HttpClient, private router: Router) {}
+=======
+ constructor(
+  private http: HttpClient, 
+  private router: Router,
+  private notificationService: NotificationService
+) {}
+>>>>>>> 3875b4f (weather)
 
 
  /**
@@ -28,7 +42,19 @@ export class AuthService {
      `${environment.apiUrl}/v1/authenticate`,
      { username, password },
      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+<<<<<<< HEAD
    );
+=======
+   ).pipe(
+    tap(response =>{
+      this.setToken(response.token);
+      console.log('Login exitoso, conectando a WebSockets...');
+
+      // Iniciar WebSocket usando el método connect
+      this.notificationService.connect();
+    })
+   )
+>>>>>>> 3875b4f (weather)
  }
 
 
@@ -66,6 +92,34 @@ export class AuthService {
   */
  logout(): void {
    this.token.next(null); // Limpia el token almacenado.
+<<<<<<< HEAD
    this.router.navigate(['/']); // Redirige al usuario a la ruta raíz.
  }
 }
+=======
+   this.notificationService.disconnect(); // Desconecta WebSockets
+   this.router.navigate(['/']); // Redirige al usuario a la ruta raíz.
+ }
+
+ /**
+ * Extrae el nombre de usuario desde el token JWT.
+ * @returns Nombre de usuario o `null` si el token es inválido.
+ */
+getUsername(): string | null {
+  const token = this.getToken();
+  if (!token) return null;
+
+  try {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.sub || null; // `sub` es el campo estándar en JWT para el username.
+  } catch (error) {
+      console.error('❌ Error al decodificar el token:', error);
+      return null;
+  }
+}
+}
+function jwtDecode(token: string): any {
+  throw new Error('Function not implemented.');
+}
+
+>>>>>>> 3875b4f (weather)

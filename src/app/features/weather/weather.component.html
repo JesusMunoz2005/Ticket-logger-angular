@@ -1,0 +1,8 @@
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<div *ngIf="weatherData">
+  <h2>Clima en {{ weatherData.name }}</h2>
+  <p>Temperatura: {{ weatherData.main.temp }}°C</p>
+  <p>Humedad: {{ weatherData.main.humidity }}%</p>
+  <p>Condición: {{ weatherData.weather[0].description }}</p>
+</div>

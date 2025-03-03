@@ -1,0 +1,16 @@
+<header class="main-header">
+  <div class="logo">
+    <a href="/">Jesus Munoz</a>
+  </div>
+  <nav class="navigation">
+    <ul class="nav-links">
+      <li><a routerLink="/">Inicio</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="/regions">Comunidades Autónomas</a></li>
+      <li><a routerLink="/weather">weather</a></li>
+      <li><a routerLink="/login">Login</a></li>
+      <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+    </ul>
+    <app-notifications *ngIf="isLoggedIn"></app-notifications>
+  </nav>
+ </header>
+ 
